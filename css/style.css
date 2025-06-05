@@ -1,412 +1,318 @@
-/* ===== Base Styles ===== */
-:root {
-    --dark-bg: #121212;
-    --darker-bg: #0a0a0a;
-    --accent-color: #dd9a1d;
-    --accent-dark: #ffa600;
-    --text-primary: #ffffff;
-    --text-secondary: #b3b3b3;
-    --card-bg: #1e1e1e;
-    --card-hover: #2a2a2a;
-}
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Nakuma Creative</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Main card styling with background preview */
+        .category-card {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 350px;
+            border: 2px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Individual card backgrounds */
+        .category-card.printing::before {
+            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+        }
+        
+        .category-card.logo::before {
+            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+        }
+        
+        .category-card.website::before {
+            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+        }
+        
+        .category-card:hover {
+            border-color: rgba(255,255,255,0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        .category-card:hover::before {
+            transform: scale(1.05);
+        }
+        
+        /* Content overlay */
+        .card-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            background: linear-gradient(to top, rgba(255, 0, 0, 0.9) 0%, rgba(0,0,0,0.5) 0%, transparent 0%);
+            padding: 30px;
+            color: white;
+        }
+        
+        .category-header {
+            margin-bottom: 20px;
+        }
+        
+        .category-header i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .category-header h3 {
+            font-size: 1.8rem;
+            margin: 0;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .btn-view {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            width: auto;
+            align-self: flex-start;
+        }
+        
+        .btn-view:hover {
+            background-color: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+        
+        /* Modal gallery styles */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            z-index: 1000;
+            overflow: auto;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
+        
+        .modal-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+        }
+        
+        .gallery-full {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+        }
+        
+        .gallery-full-item {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-full-item:hover {
+            transform: scale(1.03);
+            border-color: rgba(255,255,255,0.4);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+        
+        .modal-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        /* Centering the portfolio section */
+        .portfolio-categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    
+    <header class="dark-theme animate-fade-in">
+        <h1 class="logo">Nakuma<span>Creative</span></h1>
+    </header>
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+    <main class="dark-theme portfolio-page">
+        <section class="portfolio-categories animate-fade-in">
+            <h2 class="section-title animate-slide-up">Portfolio Kategori</h2>
+            
+            <div class="category-grid">
+                <!-- Printing Design -->
+                <div class="category-card printing animate-slide-up delay-1">
+                    <div class="card-content">
+                        <div class="category-header">
+                            <i class="fas fa-print"></i>
+                            <h3>Desain Printing</h3>
+                        </div>
+                        <button class="btn btn-view" onclick="openGallery('printing')">Lihat Galeri</button>
+                    </div>
+                </div>
+                
+                <!-- Logo Design -->
+                <div class="category-card logo animate-slide-up delay-2">
+                    <div class="card-content">
+                        <div class="category-header">
+                            <i class="fas fa-palette"></i>
+                            <h3>Logo Desain</h3>
+                        </div>
+                        <button class="btn btn-view" onclick="openGallery('logo')">Lihat Galeri</button>
+                    </div>
+                </div>
+                
+                <!-- Website Design -->
+                <div class="category-card website animate-slide-up delay-3">
+                    <div class="card-content">
+                        <div class="category-header">
+                            <i class="fas fa-laptop-code"></i>
+                            <h3>Website Design</h3>
+                        </div>
+                        <button class="btn btn-view" onclick="openGallery('website')">Lihat Galeri</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal Gallery for Printing -->
+        <div id="printing-gallery" class="gallery-modal">
+            <span class="close-modal" onclick="closeGallery('printing')">&times;</span>
+            <div class="modal-content">
+                <h2 class="modal-title">Desain Printing</h2>
+                <div class="gallery-full">
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Gallery for Logo -->
+        <div id="logo-gallery" class="gallery-modal">
+            <span class="close-modal" onclick="closeGallery('logo')">&times;</span>
+            <div class="modal-content">
+                <h2 class="modal-title">Logo Desain</h2>
+                <div class="gallery-full">
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Gallery for Website -->
+        <div id="website-gallery" class="gallery-modal">
+            <span class="close-modal" onclick="closeGallery('website')">&times;</span>
+            <div class="modal-content">
+                <h2 class="modal-title">Website Design</h2>
+                <div class="gallery-full">
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-to-home animate-fade-in">
+            <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
+        </div>
+    </main>
 
-body {
-    font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
-    background-color: var(--dark-bg);
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-/* Custom Cursor */
-.cursor {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: var(--accent-color);
-    pointer-events: none;
-    mix-blend-mode: difference;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
-}
-
-/* ===== Typography ===== */
-h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
-
-h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-}
-
-/* ===== Layout Container ===== */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* ===== Buttons ===== */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: none;
-    position: relative;
-    overflow: hidden;
-    border: none;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: var(--accent-color);
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-dark);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(179, 140, 12, 0.3);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 2px solid var(--accent-color);
-}
-
-.btn-secondary:hover {
-    background-color: rgba(226, 189, 69, 0.1);
-    transform: translateY(-3px);
-}
-
-/* Grouping Buttons */
-.button-group {
-    display: flex;
-    gap: 15px;
-    margin-top: 3rem;
-}
-
-/* ===== Banner Section ===== */
-.banner {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.banner-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../images/banner.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-    opacity: 0.3;
-}
-
-.banner-content {
-    position: relative;
-    z-index: 2;
-    text-align: left;
-    padding: 0 30px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* ===== Professional Description ===== */
-.professional-description {
-    max-width: 800px;
-    margin: 0 auto 2.5rem;
-}
-
-.professional-description .headline {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin-bottom: 1.8rem;
-    line-height: 1.5;
-}
-
-/* Expertise Tags */
-.expertise-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 2rem 0;
-}
-
-.tag {
-    background-color: transparent;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.tag:hover {
-    background-color: var(--accent-color);
-    color: white;
-    transform: translateY(-3px);
-}
-
-/* Detailed Description */
-.detailed-description {
-    margin-top: 20px;
-}
-
-.detailed-description p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    line-height: 1.7;
-}
-
-/* ===== Footer ===== */
-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 0;
-    text-align: center;
-    z-index: 10;
-}
-
-.social-links {
-    margin-bottom: 10px;
-}
-
-.social-btn {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--card-bg);
-    color: var(--text-primary);
-    margin: 0 10px;
-    line-height: 40px;
-    text-align: center;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.social-btn:hover {
-    transform: translateY(-5px);
-    background-color: var(--accent-color);
-}
-
-.whatsapp:hover {
-    background-color: #25D366;
-}
-
-.email:hover {
-    background-color: #D44638;
-}
-
-.copyright {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-
-/* ===== Portfolio Page ===== */
-.portfolio-page {
-    padding: 100px 0;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.category-card {
-    background-color: var(--card-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    padding: 25px;
-    border: 1px solid #2a2a2a;
-}
-
-.category-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--accent-color);
-}
-
-.category-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.category-header i {
-    font-size: 2rem;
-    color: var(--accent-color);
-    margin-right: 15px;
-}
-
-/* Gallery Preview */
-.gallery-preview {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.gallery-item {
-    aspect-ratio: 1/1;
-    background-size: cover;
-    background-position: center;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-
-/* View Button */
-.btn-view {
-    width: 100%;
-    margin-top: 20px;
-    background-color: var(--card-bg);
-    color: var(--text-primary);
-    border: 2px solid var(--accent-color);
-}
-
-.btn-view:hover {
-    background-color: var(--accent-color);
-}
-
-/* Back to Home Button */
-.back-to-home {
-    text-align: center;
-    margin-top: 50px;
-}
-
-/* ===== CV Page ===== */
-.cv-page {
-    padding: 100px 0;
-}
-
-.pdf-viewer {
-    width: 100%;
-    height: 70vh;
-    background-color: var(--card-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.pdf-viewer iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* CV Actions Buttons */
-.cv-actions {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 30px;
-}
-
-/* ===== Animations ===== */
-.animate-fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-}
-
-.animate-slide-up {
-    opacity: 0;
-    transform: translateY(30px);
-    animation: slideUp 0.8s ease forwards;
-}
-
-.delay-1 {
-    animation-delay: 0.2s;
-}
-
-.delay-2 {
-    animation-delay: 0.4s;
-}
-
-.delay-3 {
-    animation-delay: 0.6s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== Parallax Effect ===== */
-.parallax {
-    background-attachment: fixed;
-}
-
-/* ===== Logo ===== */
-.logo {
-    font-size: 1.8rem;
-    font-weight: 700;
-    padding: 20px;
-}
-
-.logo span {
-    color: var(--accent-color);
-}
-
-/* ===== Responsive Design =====
+    <script src="js/main.js"></script>
+    <script>
+        // Gallery functions
+        function openGallery(galleryId) {
+            document.getElementById(galleryId + '-gallery').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeGallery(galleryId) {
+            document.getElementById(galleryId + '-gallery').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target.className === 'gallery-modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+</body>
+</html>
