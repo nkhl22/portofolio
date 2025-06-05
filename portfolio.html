@@ -34,17 +34,21 @@
         
         /* Individual card backgrounds */
         .category-card.printing::before {
-            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+            background-image: url('https://cdn.discordapp.com/attachments/1380138668580405349/1380154905767186443/image.png?ex=6842d8eb&is=6841876b&hm=873c576cf428b74523c83585cb43a2614fec3228d5470d73e3c12b8ceb0dfc30&');
         }
         
         .category-card.logo::before {
-            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+            background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380147270791467098/Screenshot_939.png?ex=6842d1cf&is=6841804f&hm=e4f0bca461f3e2661515b60e41dce52bb29a4eda7e7a6015c8aa05fe556ecb34&');
         }
         
         .category-card.website::before {
-            background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
+            background-image: url('https://cdn.discordapp.com/attachments/1380138712570003466/1380155277441110137/image.png?ex=6842d944&is=684187c4&hm=6241d18b39e935fb8f4b15f689decbcdbdefc23d409938bf5a409fdeee55362b&');
         }
         
+        .category-card.feed::before {
+            background-image: url('https://cdn.discordapp.com/attachments/1380151234400358470/1380151254063255754/image.png?ex=6842d584&is=68418404&hm=bec38b5ec3556fc753ffd7ce901436fbfe4444bf3c3a6e7459b95b960ad0f014&');
+        }
+
         .category-card:hover {
             border-color: rgba(255,255,255,0.3);
             transform: translateY(-10px);
@@ -169,6 +173,38 @@
             font-size: 2.5rem;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
+        
+        /* Centering the portfolio section */
+        .portfolio-categories {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        @media (max-width: 768px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -215,6 +251,18 @@
                         <button class="btn btn-view" onclick="openGallery('website')">Lihat Galeri</button>
                     </div>
                 </div>
+
+                <!-- Feed Design -->
+                <div class="category-card feed animate-slide-up delay-3">
+                    <div class="card-content">
+                        <div class="category-header">
+                            <i class="fas fa-laptop"></i>
+                            <h3>Feed Design</h3>
+                        </div>
+                        <button class="btn btn-view" onclick="openGallery('feed')">Lihat Galeri</button>
+                    </div>
+                </div>
+
             </div>
         </section>
         
@@ -237,9 +285,12 @@
             <div class="modal-content">
                 <h2 class="modal-title">Logo Desain</h2>
                 <div class="gallery-full">
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380145376253710366/Screenshot_938.png?ex=6842d00b&is=68417e8b&hm=3fee6476dbea0913a0c07821c51c7172a5237b1486dbdc095502cfc840428bd6&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380145375922618500/Screenshot_937.png?ex=6842d00b&is=68417e8b&hm=99ec3a1963e3ebdfcbad353752ee10ccd0e3fdf42e9cfce1c9705bfd7f667f09&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380145375637143583/Screenshot_936.png?ex=6842d00b&is=68417e8b&hm=675908fad364e3900b29cc90acff07c609446c6989f2ddcd80c94737de0e57dc&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380145375272243250/Screenshot_935.png?ex=6842d00b&is=68417e8b&hm=ca92bdb18d1dd75f9ae14c17e17351f8990cdd7013ece9c82d65a830f10a9bce&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380145374953472000/Screenshot_934.png?ex=6842d00b&is=68417e8b&hm=a6a3dfcaa5f5ac7ff2130409bf133bd2f14eb4ae68aebb91c441f34b47a199e1&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138510287376447/1380150372345188352/image.png?ex=6842d4b2&is=68418332&hm=46012984a75507bf24f02364afebfce3e540bbaa6faf3d80d7cef3db057e60cd&')"></div>
                 </div>
             </div>
         </div>
@@ -250,13 +301,26 @@
             <div class="modal-content">
                 <h2 class="modal-title">Website Design</h2>
                 <div class="gallery-full">
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
-                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138712570003466/1380156089793773568/Screenshot_940.png?ex=6842da05&is=68418885&hm=7f73d8a84dfc2cbb8312801b39f56ec3fe79f08674210a51222d8b335d08b581&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138712570003466/1380156090154618921/Screenshot_941.png?ex=6842da05&is=68418885&hm=4fe7d42687a253dc9ac14fa69e33130e1b2e7d9ce05bc178f0b8cbe366300911&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380138712570003466/1380156090427244554/Screenshot_942.png?ex=6842da06&is=68418886&hm=a377b65e53b30a99c211ad389354a5c90a6f08247f65a2ef3e1b2827dc1bd3f9&')"></div>
                 </div>
             </div>
         </div>
         
+                <!-- Modal Gallery for Website -->
+        <div id="feed-gallery" class="gallery-modal">
+            <span class="close-modal" onclick="closeGallery('feed')">&times;</span>
+            <div class="modal-content">
+                <h2 class="modal-title">Feed Design</h2>
+                <div class="gallery-full">
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380151234400358470/1380152384260411564/INDOJAYA_ROLEPLAY_V2.png?ex=6842d692&is=68418512&hm=68d3281675dc55ed3bb127023dbde3281bc132e7a4b9aa76c90493addb03e2ef&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380151234400358470/1380152385049067540/indojaya_roleplay.png?ex=6842d692&is=68418512&hm=7931e90cfe9b6902f4697e138f852bf18a1f9b6d394c2edcf0cd02e02df8b404&')"></div>
+                    <div class="gallery-full-item" style="background-image: url('https://cdn.discordapp.com/attachments/1380151234400358470/1380152385686474862/10771971.png?ex=6842d692&is=68418512&hm=4559d721fcdac2a91a74752b0b13a41cb2fae071725301bc040897373a5a08e7&')"></div>
+                </div>
+            </div>
+        </div>
+
         <div class="back-to-home animate-fade-in">
             <a href="index.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Kembali ke Beranda</a>
         </div>
