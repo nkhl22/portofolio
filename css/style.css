@@ -1,4 +1,4 @@
-/* Base Styles */
+/* ===== Base Styles ===== */
 :root {
     --dark-bg: #121212;
     --darker-bg: #0a0a0a;
@@ -24,6 +24,7 @@ body {
     line-height: 1.6;
 }
 
+/* Custom Cursor */
 .cursor {
     position: fixed;
     width: 20px;
@@ -37,7 +38,7 @@ body {
     transition: transform 0.1s ease;
 }
 
-/* Typography */
+/* ===== Typography ===== */
 h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     line-height: 1.2;
@@ -64,7 +65,7 @@ p {
     color: var(--text-secondary);
 }
 
-/* Layout */
+/* ===== Layout Container ===== */
 .container {
     width: 100%;
     max-width: 1200px;
@@ -72,7 +73,7 @@ p {
     padding: 0 20px;
 }
 
-/* Buttons */
+/* ===== Buttons ===== */
 .btn {
     display: inline-block;
     padding: 12px 30px;
@@ -109,13 +110,14 @@ p {
     transform: translateY(-3px);
 }
 
+/* Grouping Buttons */
 .button-group {
     display: flex;
     gap: 15px;
     margin-top: 3rem;
 }
 
-/* Banner Section */
+/* ===== Banner Section ===== */
 .banner {
     height: 100vh;
     position: relative;
@@ -147,7 +149,7 @@ p {
     margin: 0 auto;
 }
 
-/* Professional Description */
+/* ===== Professional Description ===== */
 .professional-description {
     max-width: 800px;
     margin: 0 auto 2.5rem;
@@ -161,6 +163,7 @@ p {
     line-height: 1.5;
 }
 
+/* Expertise Tags */
 .expertise-tags {
     display: flex;
     flex-wrap: wrap;
@@ -177,6 +180,7 @@ p {
     font-size: 0.9rem;
     font-weight: 500;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .tag:hover {
@@ -185,6 +189,7 @@ p {
     transform: translateY(-3px);
 }
 
+/* Detailed Description */
 .detailed-description {
     margin-top: 20px;
 }
@@ -195,7 +200,7 @@ p {
     line-height: 1.7;
 }
 
-/* Footer */
+/* ===== Footer ===== */
 footer {
     position: fixed;
     bottom: 0;
@@ -221,6 +226,7 @@ footer {
     line-height: 40px;
     text-align: center;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .social-btn:hover {
@@ -241,7 +247,7 @@ footer {
     color: var(--text-secondary);
 }
 
-/* Portfolio Page */
+/* ===== Portfolio Page ===== */
 .portfolio-page {
     padding: 100px 0;
 }
@@ -280,6 +286,7 @@ footer {
     margin-right: 15px;
 }
 
+/* Gallery Preview */
 .gallery-preview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -292,12 +299,14 @@ footer {
     background-position: center;
     border-radius: 8px;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 .gallery-item:hover {
     transform: scale(1.05);
 }
 
+/* View Button */
 .btn-view {
     width: 100%;
     margin-top: 20px;
@@ -310,12 +319,13 @@ footer {
     background-color: var(--accent-color);
 }
 
+/* Back to Home Button */
 .back-to-home {
     text-align: center;
     margin-top: 50px;
 }
 
-/* CV Page */
+/* ===== CV Page ===== */
 .cv-page {
     padding: 100px 0;
 }
@@ -335,6 +345,7 @@ footer {
     border: none;
 }
 
+/* CV Actions Buttons */
 .cv-actions {
     display: flex;
     justify-content: center;
@@ -342,7 +353,7 @@ footer {
     margin-top: 30px;
 }
 
-/* Animations */
+/* ===== Animations ===== */
 .animate-fade-in {
     opacity: 0;
     animation: fadeIn 1s ease forwards;
@@ -372,22 +383,22 @@ footer {
 }
 
 @keyframes slideUp {
-    from { 
+    from {
         opacity: 0;
         transform: translateY(30px);
     }
-    to { 
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Parallax Effect */
+/* ===== Parallax Effect ===== */
 .parallax {
     background-attachment: fixed;
 }
 
-/* Logo */
+/* ===== Logo ===== */
 .logo {
     font-size: 1.8rem;
     font-weight: 700;
@@ -398,239 +409,4 @@ footer {
     color: var(--accent-color);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    h2 {
-        font-size: 2rem;
-    }
-    
-    .professional-description .headline {
-        font-size: 1.1rem;
-    }
-    
-    .button-group {
-        flex-direction: column;
-    }
-    
-    .category-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .cv-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .banner-content {
-        padding: 0 20px;
-        text-align: center;
-    }
-    
-    .expertise-tags {
-        grid-template-columns: 1fr 1fr;
-        justify-content: center;
-    }
-<style>
-    /* Main card styling with background preview */
-    .category-card {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        height: 350px;
-        border: 2px solid rgba(255,255,255,0.1);
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-    
-    .category-card::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-size: cover;
-        background-position: center;
-        z-index: 1;
-        transition: transform 0.5s ease;
-    }
-    
-    /* Individual card backgrounds */
-    .category-card.printing::before {
-        background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
-    }
-    
-    .category-card.logo::before {
-        background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
-    }
-    
-    .category-card.website::before {
-        background-image: url('https://cdn.discordapp.com/attachments/1359359095928389769/1374599938410938398/FiveM_by_Cfx.re_5_21_2025_11_05_23_AM.png?ex=6841c134&is=68406fb4&hm=d02c08eef35d657c25b99063303f84592ab7c271dabd0db3058b7604a12a0475&');
-    }
-    
-    .category-card:hover {
-        border-color: rgba(255,255,255,0.3);
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
-    }
-    
-    .category-card:hover::before {
-        transform: scale(1.05);
-    }
-    
-    /* Content overlay */
-    .card-content {
-        position: relative;
-        z-index: 2;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        background: linear-gradient(to top, rgba(255, 0, 0, 0.9) 0%, rgba(0,0,0,0.5) 0%, transparent 0%);
-        padding: 30px;
-        color: white;
-    }
-    
-    .category-header {
-        margin-bottom: 20px;
-    }
-    
-    .category-header i {
-        font-size: 2rem;
-        margin-bottom: 10px;
-        color: #fff;
-    }
-    
-    .category-header h3 {
-        font-size: 1.8rem;
-        margin: 0;
-        color: #fff;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-    
-    .btn-view {
-        background-color: rgba(255,255,255,0.2);
-        color: white;
-        border: 2px solid rgba(255,255,255,0.4);
-        padding: 12px 20px;
-        border-radius: 50px;
-        font-weight: 600;
-        backdrop-filter: blur(5px);
-        transition: all 0.3s ease;
-        width: auto;
-        align-self: flex-start;
-    }
-    
-    .btn-view:hover {
-        background-color: rgba(255,255,255,0.3);
-        transform: translateY(-3px);
-    }
-    
-    /* Modal gallery styles */
-    .gallery-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.95);
-        z-index: 1000;
-        overflow: auto;
-        padding: 40px 20px;
-        box-sizing: border-box;
-    }
-    
-    .modal-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-    }
-    
-    .close-modal {
-        position: fixed;
-        top: 30px;
-        right: 30px;
-        color: white;
-        font-size: 40px;
-        cursor: pointer;
-        z-index: 1001;
-        transition: transform 0.3s ease;
-    }
-    
-    .close-modal:hover {
-        transform: rotate(90deg);
-    }
-    
-    .gallery-full {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 25px;
-        margin-top: 60px;
-    }
-    
-    .gallery-full-item {
-        height: 250px;
-        background-size: cover;
-        background-position: center;
-        border-radius: 8px;
-        border: 2px solid rgba(255,255,255,0.2);
-        transition: all 0.3s ease;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-    
-    .gallery-full-item:hover {
-        transform: scale(1.03);
-        border-color: rgba(255,255,255,0.4);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
-    }
-    
-    .modal-title {
-        color: white;
-        text-align: center;
-        margin-bottom: 30px;
-        font-size: 2.5rem;
-        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    }
-
-    /* ======= tambahan untuk center ======= */
-
-    /* Center tulisan Nakuma Creative di header */
-    header.dark-theme h1.logo {
-        text-align: center;
-        width: 100%;
-        margin: 0 auto;
-        font-weight: 700;
-        font-size: 2.8rem;
-        user-select: none;
-    }
-
-    /* Center tulisan Portfolio Kategori */
-    .portfolio-page .section-title {
-        text-align: center;
-        width: 100%;
-        margin-bottom: 40px;
-        font-weight: 600;
-        font-size: 2.4rem;
-        user-select: none;
-    }
-
-    /* Batas maksimal lebar konten utama dan center */
-    main.portfolio-page {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
-</style>
-
-    
-    .gallery-preview {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+/* ===== Responsive Design =====
