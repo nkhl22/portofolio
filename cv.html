@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Nakuma Creative</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        header {
+            padding: 1px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo span {
+            color: #ffa600;
+        }
+        
+        .page-title {
+            text-align: center;
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+        
+        .pdf-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pdf-viewer {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: #2a2a2a;
+        }
+        
+        .cv-actions {
+            padding: 20px;
+            text-align: center;
+            background: #1a1a1a;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-download {
+            background: #ffa600;
+            color: white;
+        }
+        
+        .btn-download:hover {
+            background: #755a02;
+        }
+        
+        .btn-back {
+            background: #333;
+            color: white;
+        }
+        
+        .btn-back:hover {
+            background: #444;
+        }
+        
+        .btn i {
+            margin-right: 8px;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1 class="logo">Nakuma<span>Creative</span></h1>
+    </header>
+
+    <main class="pdf-container">
+        <h2 class="page-title">Curriculum Vitae</h2>
+        
+        <!-- PDF viewer without any toolbars or controls -->
+        <iframe class="pdf-viewer" src="images/cv.pdf#toolbar=0&navpanes=0&scrollbar=0"></iframe>
+        
+        <div class="cv-actions">
+            <a href="images/cv.pdf" download class="btn btn-download">
+                <i class="fas fa-download"></i> Download CV
+            </a>
+            <a href="index.html" class="btn btn-back">
+                <i class="fas fa-arrow-left"></i> Kembali ke Beranda
+            </a>
+        </div>
+    </main>
+</body>
+</html>
