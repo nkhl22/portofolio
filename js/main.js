@@ -61,12 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Load gallery images from Discord or other source
+
     // This would need to be implemented based on your specific setup
     // function loadGalleryImages() {
     //     // Implementation would go here
     // }
-    // loadGalleryImages();
+
 });
 // Add animation to tags
 document.querySelectorAll('.tag').forEach((tag, index) => {
